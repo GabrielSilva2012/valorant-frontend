@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { single } from './data';
+import { reaward, single } from './data';
 import { eventos } from './data';
 import { LegendPosition } from '@swimlane/ngx-charts';
 import { FormControl } from '@angular/forms';
@@ -19,8 +19,12 @@ export class GraficosComponent  {
 
   eventos = []
   single = []
+  reaward = []
+
   view: [number, number] = [0, 0];
   view2:[number, number] = [1000, 0];
+
+  cardColor: string = '#232837';
 
   // options
   gradient: boolean = false;
@@ -35,6 +39,7 @@ export class GraficosComponent  {
   yAxisLabel = 'Quantidade';
   legendPosition = 'below';
 
+
   below = LegendPosition.Below
 
 
@@ -43,7 +48,7 @@ export class GraficosComponent  {
   constructor() {
     Object.assign(this, { single });
     Object.assign(this, { eventos });
-    console.log(this.below)
+    Object.assign(this, { reaward });
   }
 
   onSelect(data: any): void {

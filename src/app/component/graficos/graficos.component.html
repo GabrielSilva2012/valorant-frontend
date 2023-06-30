@@ -3,7 +3,7 @@
 
     <div>
         <div class="flex justify-center items-center gap-6">
-            <p class="text-center text-3xl text-[#fff]">Skins em Eventos</p>
+            <p class="text-center text-3xl text-[#fff]">Premiacoes em Skins</p>
             <mat-form-field appearance="outline" class="w-36">
                 <mat-label class=" font-padrao">Filtrar</mat-label>
                 <mat-select class="font-padrao" [formControl]="toppings" multiple>
@@ -35,7 +35,6 @@
         </div>
         
     </div>
-
     <div class="flex justify-around">
         <div>
             <div class="flex justify-center items-center gap-6">
@@ -87,16 +86,54 @@
               </mat-form-field>
         </div>
         <div class="bg-[#FFFFFF] bg-opacity-40 rounded-2xl py-10 flex  justify-center">
-        <ngx-charts-pie-grid
-        [view]="view"
-        [scheme]="'fire'"
-        [results]="eventos"
-        (select)="onSelect($event)">
-      </ngx-charts-pie-grid>
+            <ngx-charts-number-card
+            [view]="[0,0]"
+            [scheme]="'fire'"
+            [results]="eventos"
+            [cardColor]="cardColor"
+            (select)="onSelect($event)">
+          </ngx-charts-number-card>
         </div>
       </div>
 
     </div>
+
+
+    <div>
+        <div class="flex justify-center items-center gap-6">
+            <p class="text-center text-3xl text-[#fff]">Quantidade de Xps</p>
+            <mat-form-field appearance="outline" class="w-36">
+                <mat-label class=" font-padrao">Filtrar</mat-label>
+                <mat-select class="font-padrao" [formControl]="toppings" multiple>
+                  <mat-select-trigger class="font-padrao">
+                    {{toppings.value?.[0] || ''}}
+                    <span  *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection font-padrao">
+                      (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+                    </span>
+                  </mat-select-trigger>
+                  <mat-option *ngFor="let topping of toppingList" [value]="topping"><p class="font-padrao">{{topping}}</p></mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div class="bg-[#FFFFFF] mx-56 bg-opacity-40 rounded-2xl  flex justify-center">
+            <ngx-charts-advanced-pie-chart
+            [view]="[800,0]"
+            [scheme]="'fire'"
+            [results]="eventos"
+            [gradient]="gradient"
+            (select)="onSelect($event)"
+            (activate)="onActivate($event)"
+            (deactivate)="onDeactivate($event)"
+            >
+          </ngx-charts-advanced-pie-chart>
+        </div>
+        
+    </div>
+
+    
+   
+
+
 
 
   
