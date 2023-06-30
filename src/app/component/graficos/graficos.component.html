@@ -3,7 +3,7 @@
 
     <div>
         <div class="flex justify-center items-center gap-6">
-            <p class="text-center text-3xl text-[#fff]">Premiacoes em Skins</p>
+            <p class="text-center text-3xl text-[#fff]">Skins de Armas</p>
             <mat-form-field appearance="outline" class="w-36">
                 <mat-label class=" font-padrao">Filtrar</mat-label>
                 <mat-select class="font-padrao" [formControl]="toppings" multiple>
@@ -38,7 +38,7 @@
     <div class="flex justify-around">
         <div>
             <div class="flex justify-center items-center gap-6">
-                <p class="text-center font-padrao text-3xl text-[#fff]">Premiacoes</p>
+                <p class="text-center font-padrao text-3xl text-[#fff]">Relacionamento</p>
                 <mat-form-field appearance="outline" class="w-36">
                     <mat-label class=" font-padrao">Filtrar</mat-label>
                     <mat-select class="rounded-xl font-padrao" [formControl]="toppings" multiple>
@@ -71,19 +71,8 @@
 
       <div>
         <div class="flex justify-center items-center gap-6">
-            <p class="text-center font-padrao text-3xl text-[#fff]">Premiacoes</p>
-            <mat-form-field appearance="outline" class="w-36">
-                <mat-label class=" font-padrao">Filtrar</mat-label>
-                <mat-select  class="rounded-xl font-padrao " [formControl]="toppings" multiple>
-                  <mat-select-trigger class="font-padrao">
-                    {{toppings.value?.[0] || ''}}
-                    <span  *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection ">
-                     (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
-                    </span>
-                  </mat-select-trigger>
-                  <mat-option *ngFor="let topping of toppingList" [value]="topping"><p class="font-padrao">{{topping}}</p></mat-option>
-                </mat-select>
-              </mat-form-field>
+         <p class="text-center font-padrao text-3xl text-[#fff] h-20 flex items-center">Roles de Agentes</p>
+
         </div>
         <div class="bg-[#FFFFFF] bg-opacity-40 rounded-2xl py-10 flex  justify-center">
             <ngx-charts-number-card
