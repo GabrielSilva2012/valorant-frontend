@@ -1,0 +1,103 @@
+<div class="flex flex-col justify-center gap-8 py-10 m-0">
+    <p class="text-vermelho text-center text-5xl">Graficos</p>
+
+    <div>
+        <div class="flex justify-center items-center gap-6">
+            <p class="text-center text-3xl text-[#fff]">Skins em Eventos</p>
+            <mat-form-field class="w-36">
+                <mat-label class=" font-padrao">Filtrar</mat-label>
+                <mat-select class="font-padrao" [formControl]="toppings" multiple>
+                  <mat-select-trigger class="font-padrao">
+                    {{toppings.value?.[0] || ''}}
+                    <span  *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection font-padrao">
+                      (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+                    </span>
+                  </mat-select-trigger>
+                  <mat-option *ngFor="let topping of toppingList" [value]="topping"><p class="font-padrao">{{topping}}</p></mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div class="bg-[#FFFFFF] mx-36 bg-opacity-40 rounded-2xl py-10 flex justify-center">
+            <ngx-charts-bar-vertical
+            [view]="view2"
+            [scheme]="'fire'"
+            [results]="single"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            (select)="onSelect($event)">
+          </ngx-charts-bar-vertical>
+        </div>
+        
+    </div>
+
+    <div class="flex justify-around">
+        <div>
+            <div class="flex justify-center items-center gap-6">
+                <p class="text-center font-padrao text-3xl text-[#fff]">Premiacoes</p>
+                <mat-form-field class="w-36">
+                    <mat-label class=" font-padrao">Filtrar</mat-label>
+                    <mat-select class="rounded-xl font-padrao" [formControl]="toppings" multiple>
+                      <mat-select-trigger class="font-padrao">
+                        {{toppings.value?.[0] || ''}}
+                        <span  *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection ">
+                         (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+                        </span>
+                      </mat-select-trigger>
+                      <mat-option *ngFor="let topping of toppingList" [value]="topping"><p class="font-padrao">{{topping}}</p></mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div class="bg-[#FFFFFF] bg-opacity-40 rounded-2xl py-10 flex  justify-center">
+            <ngx-charts-pie-chart
+            [view]="view"
+            [scheme]="'fire'"
+            [results]="eventos"
+            [gradient]="gradient"
+            [legend]="showLegend"
+            [labels]="showLabels"
+            [doughnut]="isDoughnut"
+            (select)="onSelect($event)"
+            (activate)="onActivate($event)"
+            (deactivate)="onDeactivate($event)"
+            >
+          </ngx-charts-pie-chart>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex justify-center items-center gap-6">
+            <p class="text-center font-padrao text-3xl text-[#fff]">Premiacoes</p>
+            <mat-form-field class="w-36">
+                <mat-label class=" font-padrao">Filtrar</mat-label>
+                <mat-select class="rounded-xl font-padrao" [formControl]="toppings" multiple>
+                  <mat-select-trigger class="font-padrao">
+                    {{toppings.value?.[0] || ''}}
+                    <span  *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection ">
+                     (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+                    </span>
+                  </mat-select-trigger>
+                  <mat-option *ngFor="let topping of toppingList" [value]="topping"><p class="font-padrao">{{topping}}</p></mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div class="bg-[#FFFFFF] bg-opacity-40 rounded-2xl py-10 flex  justify-center">
+        <ngx-charts-pie-grid
+        [view]="view"
+        [scheme]="'neons'"
+        [results]="eventos"
+        (select)="onSelect($event)">
+      </ngx-charts-pie-grid>
+        </div>
+      </div>
+
+    </div>
+
+
+  
+</div>

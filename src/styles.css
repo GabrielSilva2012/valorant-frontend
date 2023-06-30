@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html, body { height: 100%; }
+
+@font-face {
+    font-family: 'font-padrao';
+    src: url('./assets/fonts/fonte.ttf') format('truetype');
+  }
+
+body { margin: 0; font-family:  "font-padrao", sans-serif; }
