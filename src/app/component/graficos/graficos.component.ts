@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { single } from './data';
 import { eventos } from './data';
 import { LegendPosition } from '@swimlane/ngx-charts';
@@ -8,7 +8,8 @@ import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-graficos',
   templateUrl: './graficos.component.html',
-  styleUrls: ['./graficos.component.css']
+  styleUrls: ['./graficos.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class GraficosComponent  {
 
