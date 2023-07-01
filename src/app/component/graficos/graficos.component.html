@@ -1,19 +1,19 @@
-<div class="flex flex-col justify-center gap-8 py-10 m-0">
+<div class="flex flex-col justify-center gap-10 py-10 m-0">
     <p class="text-vermelho text-center text-5xl">Graficos</p>
 
     <div>
         <div class="flex justify-center items-center gap-6">
             <p class="text-center text-3xl text-[#fff]">Skins de Armas</p>
-            <mat-form-field appearance="outline" class="w-36">
+            <mat-form-field  class="w-40">
                 <mat-label class=" font-padrao">Filtrar</mat-label>
-                <mat-select class="font-padrao" [formControl]="toppings" multiple>
+                <mat-select class="font-padrao" [formControl]="selecaoArmasControl"  (selectionChange)="filtarArmas()" multiple>
                   <mat-select-trigger class="font-padrao">
-                    {{toppings.value?.[0] || ''}}
-                    <span  *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection font-padrao">
-                      (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+                    {{selecaoArmasControl.value?.[0] || ''}}
+                    <span  *ngIf="(selecaoArmasControl.value?.length || 0) > 1" class="example-additional-selection font-padrao">
+                      (+{{(selecaoArmasControl.value?.length || 0) - 1}} {{selecaoArmasControl.value?.length === 2 ? 'other' : 'others'}})
                     </span>
                   </mat-select-trigger>
-                  <mat-option *ngFor="let topping of toppingList" [value]="topping"><p class="font-padrao">{{topping}}</p></mat-option>
+                  <mat-option *ngFor="let arma of selecaoArmas" [value]="arma"><p class="font-padrao">{{arma}}</p></mat-option>
                 </mat-select>
               </mat-form-field>
         </div>
@@ -38,17 +38,11 @@
     <div class="flex justify-around">
         <div>
             <div class="flex justify-center items-center gap-6">
-                <p class="text-center font-padrao text-3xl text-[#fff]">Relacionamento</p>
-                <mat-form-field appearance="outline" class="w-36">
+                <p class="text-center font-padrao text-3xl text-[#fff]">Relacionamentos</p>
+                <mat-form-field class="w-40">
                     <mat-label class=" font-padrao">Filtrar</mat-label>
-                    <mat-select class="rounded-xl font-padrao" [formControl]="toppings" multiple>
-                      <mat-select-trigger class="font-padrao">
-                        {{toppings.value?.[0] || ''}}
-                        <span  *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection ">
-                         (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
-                        </span>
-                      </mat-select-trigger>
-                      <mat-option *ngFor="let topping of toppingList" [value]="topping"><p class="font-padrao">{{topping}}</p></mat-option>
+                    <mat-select class="rounded-xl font-padrao" [formControl]="relacionamentosControl" (selectionChange)="filtarRelacionamentos()">
+                      <mat-option *ngFor="let relacionamento of relacionamentos" [value]="relacionamento"><p class="font-padrao">{{relacionamento}}</p></mat-option>
                     </mat-select>
                   </mat-form-field>
             </div>
@@ -71,8 +65,19 @@
 
       <div>
         <div class="flex justify-center items-center gap-6">
-         <p class="text-center font-padrao text-3xl text-[#fff] h-20 flex items-center">Roles de Agentes</p>
-
+         <p class="text-center font-padrao text-3xl text-[#fff]">Roles de Agentes</p>
+         <mat-form-field  class="w-40">
+            <mat-label class=" font-padrao">Filtrar</mat-label>
+            <mat-select class="font-padrao" [formControl]="agentsControl"  (selectionChange)="filtarAgentes()" multiple>
+              <mat-select-trigger class="font-padrao">
+                {{agentsControl.value?.[0] || ''}}
+                <span  *ngIf="(agentsControl.value?.length || 0) > 1" class="example-additional-selection font-padrao">
+                  (+{{(agentsControl.value?.length || 0) - 1}} {{agentsControl.value?.length === 2 ? 'other' : 'others'}})
+                </span>
+              </mat-select-trigger>
+              <mat-option *ngFor="let agent of agents" [value]="agent"><p class="font-padrao">{{agent}}</p></mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
         <div class="bg-[#FFFFFF] bg-opacity-40 rounded-2xl py-10 flex  justify-center">
             <ngx-charts-number-card
@@ -91,16 +96,16 @@
     <div>
         <div class="flex justify-center items-center gap-6">
             <p class="text-center text-3xl text-[#fff]">Quantidade de Xps</p>
-            <mat-form-field appearance="outline" class="w-36">
+            <mat-form-field class="w-40">
                 <mat-label class=" font-padrao">Filtrar</mat-label>
-                <mat-select class="font-padrao" [formControl]="toppings" multiple>
+                <mat-select class="font-padrao" [formControl]="reawardsControl"  (selectionChange)="filtarReawards()" multiple>
                   <mat-select-trigger class="font-padrao">
-                    {{toppings.value?.[0] || ''}}
-                    <span  *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection font-padrao">
-                      (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+                    {{reawardsControl.value?.[0] || ''}}
+                    <span  *ngIf="(reawardsControl.value?.length || 0) > 1" class="example-additional-selection font-padrao">
+                      (+{{(reawardsControl.value?.length || 0) - 1}} {{reawardsControl.value?.length === 2 ? 'other' : 'others'}})
                     </span>
                   </mat-select-trigger>
-                  <mat-option *ngFor="let topping of toppingList" [value]="topping"><p class="font-padrao">{{topping}}</p></mat-option>
+                  <mat-option *ngFor="let reaward of reawards" [value]="reaward"><p class="font-padrao">{{reaward}}</p></mat-option>
                 </mat-select>
               </mat-form-field>
         </div>

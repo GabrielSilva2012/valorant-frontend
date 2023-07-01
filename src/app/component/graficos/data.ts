@@ -40,10 +40,6 @@ export var single = [
       "value": 15
     },
     {
-      "name": "Bulldog",
-      "value": 20
-    },
-    {
       "name": "Vandal",
       "value": 2
     },
