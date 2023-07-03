@@ -1,0 +1,123 @@
+<form [formGroup]="form">
+    <mat-accordion >
+        <mat-expansion-panel [disabled]="!verificaDisplayName" >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+                <mat-slide-toggle
+                (change)="ativaDisplayName()">
+              <p class="font-padrao text-xl">DisplayName</p>
+          </mat-slide-toggle>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div *ngIf="!filtroSkin" class="grid grid-cols-4 gap-4 my-4">
+            <mat-form-field  class="font-padrao mb-[-1.25em]"  appearance="outline">
+                <mat-label class="font-padrao">Contains</mat-label>
+                <input  formControlName="contains" matInput>
+                
+              </mat-form-field>
+    
+              <mat-form-field  class="font-padrao mb-[-1.25em]" appearance="outline">
+                <mat-label class="font-padrao">Equals</mat-label>
+                <input  formControlName="equals"  matInput>
+                
+              </mat-form-field>
+    
+              <mat-form-field class=" mb-[-1.25em]" appearance="outline" >
+                <mat-label class=" font-padrao">In</mat-label>
+                <mat-select  class="font-padrao" formControlName="in"  multiple>
+                  <mat-option *ngFor="let weapon of selecaoWeapons" [value]="weapon"><p class="font-padrao">{{weapon}}</p></mat-option>
+                  <mat-select-trigger class="font-padrao">
+                    {{form.get('in')?.value?.[0] || ''}}
+                    <span  *ngIf="(form.get('in')?.value?.length || 0) > 1" class=" font-padrao">
+                      (+{{(form.get('in')?.value?.length || 0) - 1}} {{form.get('in')?.value?.length === 2 ? 'weapon' : 'weapons'}})
+                    </span>
+                  </mat-select-trigger>
+                </mat-select>
+                
+              </mat-form-field>
+    
+              <mat-form-field class="mb-[-1.25em]"appearance="outline"  >
+                <mat-label class="font-padrao">Mode</mat-label>
+                <mat-select class="font-padrao" formControlName="mode" >
+                  <mat-option [value]="'default'"><p class="font-padrao">Default</p></mat-option>
+                  <mat-option [value]="'insensitive '"><p class="font-padrao">Insensitive </p></mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div *ngIf="filtroSkin" class="grid grid-cols-3 gap-4 my-4">
+          <mat-form-field  class="font-padrao mb-[-1.25em]"  appearance="outline">
+              <mat-label class="font-padrao">Contains</mat-label>
+              <input  formControlName="contains" matInput>
+              
+            </mat-form-field>
+  
+            <mat-form-field  class="font-padrao mb-[-1.25em]" appearance="outline">
+              <mat-label class="font-padrao">Equals</mat-label>
+              <input  formControlName="equals"  matInput>
+              
+            </mat-form-field>
+  
+            <mat-form-field class="mb-[-1.25em]"appearance="outline"  >
+              <mat-label class="font-padrao">Mode</mat-label>
+              <mat-select class="font-padrao" formControlName="mode" >
+                <mat-option [value]="'default'"><p class="font-padrao">Default</p></mat-option>
+                <mat-option [value]="'insensitive '"><p class="font-padrao">Insensitive </p></mat-option>
+              </mat-select>
+            </mat-form-field>
+      </div>
+    
+        <mat-expansion-panel [disabled]="!verificaNot">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-slide-toggle
+        (change)="ativaNot()">
+      <p class="font-padrao text-xl">Not</p>
+  </mat-slide-toggle>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div *ngIf="filtroSkin" class="grid grid-cols-2 gap-4">
+            
+        <mat-form-field  class="font-padrao mb-[-1.25em]" appearance="outline">
+            <mat-label class="font-padrao">Contains</mat-label>
+            <input  formControlName="notContains"  matInput>
+            
+          </mat-form-field>
+
+          <mat-form-field  class="font-padrao mb-[-1.25em]" appearance="outline">
+            <mat-label class="font-padrao">Equals</mat-label>
+            <input  formControlName="notEquals"   matInput>
+            
+          </mat-form-field>
+    </div>
+    <div *ngIf="!filtroSkin" class="grid grid-cols-3 gap-4">
+            
+      <mat-form-field  class="font-padrao mb-[-1.25em]" appearance="outline">
+          <mat-label class="font-padrao">Contains</mat-label>
+          <input  formControlName="notContains"  matInput>
+          
+        </mat-form-field>
+
+        <mat-form-field  class="font-padrao mb-[-1.25em]" appearance="outline">
+          <mat-label class="font-padrao">Equals</mat-label>
+          <input  formControlName="notEquals"   matInput>
+          
+        </mat-form-field>
+
+        <mat-form-field class=" mb-[-1.25em]" appearance="outline" >
+          <mat-label class=" font-padrao">In</mat-label>
+          <mat-select  class="font-padrao" formControlName="notIn"  multiple>
+            <mat-option *ngFor="let weapon of selecaoWeapons" [value]="weapon"><p class="font-padrao">{{weapon}}</p></mat-option>
+            <mat-select-trigger class="font-padrao">
+              {{form.get('notIn')?.value?.[0] || ''}}
+              <span  *ngIf="(form.get('notIn')?.value?.length || 0) > 1" class=" font-padrao">
+                (+{{(form.get('notIn')?.value?.length || 0) - 1}} {{form.get('notIn')?.value?.length === 2 ? 'weapon' : 'weapons'}})
+              </span>
+            </mat-select-trigger>
+          </mat-select>
+          
+        </mat-form-field>
+  </div>
+  </mat-expansion-panel>
+        </mat-expansion-panel>
+      </mat-accordion>
+</form>

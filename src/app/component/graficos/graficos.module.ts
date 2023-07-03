@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NgIf } from '@angular/common';
     ReactiveFormsModule,
     NgIf,
     MatInputModule,
+    HttpClientModule
   ],
   exports: [GraficosComponent],
   providers: [],

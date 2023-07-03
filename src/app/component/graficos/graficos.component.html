@@ -1,15 +1,15 @@
-<div class="flex flex-col justify-center gap-10 py-10 m-0">
+<div class="flex flex-col justify-center  py-10 m-0">
     <p class="text-vermelho text-center text-5xl">Graficos</p>
 
-    <div>
+    <div class=" mt-8">
         <div class="flex justify-center items-center gap-6">
             <p class="text-center text-3xl text-[#fff]">Skins de Armas</p>
             <mat-form-field  class="w-40">
                 <mat-label class=" font-padrao">Filtrar</mat-label>
-                <mat-select class="font-padrao" [formControl]="selecaoArmasControl"  (selectionChange)="filtarArmas()" multiple>
+                <mat-select class="font-padrao" [formControl]="selecaoArmasControl"  (selectionChange)="filtrarArmas()" multiple>
                   <mat-select-trigger class="font-padrao">
                     {{selecaoArmasControl.value?.[0] || ''}}
-                    <span  *ngIf="(selecaoArmasControl.value?.length || 0) > 1" class="example-additional-selection font-padrao">
+                    <span  *ngIf="(selecaoArmasControl.value?.length || 0) > 1" class=" font-padrao">
                       (+{{(selecaoArmasControl.value?.length || 0) - 1}} {{selecaoArmasControl.value?.length === 2 ? 'other' : 'others'}})
                     </span>
                   </mat-select-trigger>
@@ -17,47 +17,53 @@
                 </mat-select>
               </mat-form-field>
         </div>
-        <div class="bg-[#FFFFFF] mx-36 bg-opacity-40 rounded-2xl py-10 flex justify-center">
-            <ngx-charts-bar-vertical
-            [view]="view2"
-            [scheme]="'fire'"
-            [results]="single"
-            [gradient]="gradient"
-            [xAxis]="showXAxis"
-            [yAxis]="showYAxis"
-            [legend]="showLegend"
-            [showXAxisLabel]="showXAxisLabel"
-            [showYAxisLabel]="showYAxisLabel"
-            [xAxisLabel]="xAxisLabel"
-            [yAxisLabel]="yAxisLabel"
-            (select)="onSelect($event)">
-          </ngx-charts-bar-vertical>
+        <div class="bg-verde mx-36 bg-opacity-40 rounded-2xl py-10 flex justify-center">
+          <ngx-charts-bar-vertical
+          [view]="[1000,0]"
+          [scheme]="'fire'"
+          [results]="armas"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="'Armas'"
+          [yAxisLabel]="'Quantidade'"
+          (select)="false">
+        </ngx-charts-bar-vertical>
         </div>
         
     </div>
-    <div class="flex justify-around">
+    <div class="flex justify-around my-20">
         <div>
             <div class="flex justify-center items-center gap-6">
-                <p class="text-center font-padrao text-3xl text-[#fff]">Relacionamentos</p>
-                <mat-form-field class="w-40">
+                <p class="text-center font-padrao text-3xl text-[#fff]">Rewards</p>
+                <mat-form-field class="w-40 font-padrao">
                     <mat-label class=" font-padrao">Filtrar</mat-label>
-                    <mat-select class="rounded-xl font-padrao" [formControl]="relacionamentosControl" (selectionChange)="filtarRelacionamentos()">
-                      <mat-option *ngFor="let relacionamento of relacionamentos" [value]="relacionamento"><p class="font-padrao">{{relacionamento}}</p></mat-option>
+                    <mat-select class="rounded-xl font-padrao" [formControl]="rewardsControl" (selectionChange)="filtrarRewards()" multiple>
+                      <mat-select-trigger class="font-padrao">
+                        {{rewardsControl.value?.[0] || ''}}
+                        <span  *ngIf="(rewardsControl.value?.length || 0) > 1" class="font-padrao">
+                          (+{{(rewardsControl.value?.length || 0) - 1}} {{rewardsControl.value?.length === 2 ? 'other' : 'others'}})
+                        </span>
+                      </mat-select-trigger>
+                      <mat-option class="font-padrao" *ngFor="let rewards of selecaoReawards" [value]="rewards"><p class="font-padrao">{{rewards}}</p></mat-option>
                     </mat-select>
                   </mat-form-field>
             </div>
-            <div class="bg-[#FFFFFF] bg-opacity-40 rounded-2xl py-10 flex  justify-center">
+            <div class="bg-verde bg-opacity-40 rounded-2xl py-10 flex  justify-center">
             <ngx-charts-pie-chart
-            [view]="view"
+            [view]="[0,0]"
             [scheme]="'fire'"
-            [results]="eventos"
+            [results]="rewards"
             [gradient]="gradient"
             [legend]="showLegend"
             [labels]="showLabels"
             [doughnut]="isDoughnut"
-            (select)="onSelect($event)"
-            (activate)="onActivate($event)"
-            (deactivate)="onDeactivate($event)"
+            (select)="false"
+            (activate)="false"
+            (deactivate)="false"
             >
           </ngx-charts-pie-chart>
         </div>
@@ -65,27 +71,16 @@
 
       <div>
         <div class="flex justify-center items-center gap-6">
-         <p class="text-center font-padrao text-3xl text-[#fff]">Roles de Agentes</p>
-         <mat-form-field  class="w-40">
-            <mat-label class=" font-padrao">Filtrar</mat-label>
-            <mat-select class="font-padrao" [formControl]="agentsControl"  (selectionChange)="filtarAgentes()" multiple>
-              <mat-select-trigger class="font-padrao">
-                {{agentsControl.value?.[0] || ''}}
-                <span  *ngIf="(agentsControl.value?.length || 0) > 1" class="example-additional-selection font-padrao">
-                  (+{{(agentsControl.value?.length || 0) - 1}} {{agentsControl.value?.length === 2 ? 'other' : 'others'}})
-                </span>
-              </mat-select-trigger>
-              <mat-option *ngFor="let agent of agents" [value]="agent"><p class="font-padrao">{{agent}}</p></mat-option>
-            </mat-select>
-          </mat-form-field>
+         <p class="text-center font-padrao text-3xl h-20 flex items-center text-[#fff]">Roles de Agentes</p>
+    
         </div>
-        <div class="bg-[#FFFFFF] bg-opacity-40 rounded-2xl py-10 flex  justify-center">
+        <div class="bg-verde bg-opacity-40 rounded-2xl py-10 flex  justify-center">
             <ngx-charts-number-card
             [view]="[0,0]"
             [scheme]="'fire'"
-            [results]="eventos"
+            [results]="agents"
             [cardColor]="cardColor"
-            (select)="onSelect($event)">
+            (select)="false">
           </ngx-charts-number-card>
         </div>
       </div>
@@ -96,28 +91,22 @@
     <div>
         <div class="flex justify-center items-center gap-6">
             <p class="text-center text-3xl text-[#fff]">Quantidade de Xps</p>
-            <mat-form-field class="w-40">
+            <mat-form-field class="w-40" >
                 <mat-label class=" font-padrao">Filtrar</mat-label>
-                <mat-select class="font-padrao" [formControl]="reawardsControl"  (selectionChange)="filtarReawards()" multiple>
-                  <mat-select-trigger class="font-padrao">
-                    {{reawardsControl.value?.[0] || ''}}
-                    <span  *ngIf="(reawardsControl.value?.length || 0) > 1" class="example-additional-selection font-padrao">
-                      (+{{(reawardsControl.value?.length || 0) - 1}} {{reawardsControl.value?.length === 2 ? 'other' : 'others'}})
-                    </span>
-                  </mat-select-trigger>
-                  <mat-option *ngFor="let reaward of reawards" [value]="reaward"><p class="font-padrao">{{reaward}}</p></mat-option>
+                <mat-select class="font-padrao" [formControl]="xpsControl" (selectionChange)="filtrarXps()"  >
+                  <mat-option *ngFor="let contratos of selecaoContratos" [value]="contratos"><p class="font-padrao">{{contratos}}</p></mat-option>
                 </mat-select>
               </mat-form-field>
         </div>
-        <div class="bg-[#FFFFFF] mx-56 bg-opacity-40 rounded-2xl  flex justify-center">
+        <div class="bg-verde mx-56 bg-opacity-40 rounded-2xl  flex justify-center">
             <ngx-charts-advanced-pie-chart
             [view]="[800,0]"
             [scheme]="'fire'"
-            [results]="eventos"
+            [results]="xps"
             [gradient]="gradient"
-            (select)="onSelect($event)"
-            (activate)="onActivate($event)"
-            (deactivate)="onDeactivate($event)"
+            (select)="false"
+            (activate)="false"
+            (deactivate)="false"
             >
           </ngx-charts-advanced-pie-chart>
         </div>

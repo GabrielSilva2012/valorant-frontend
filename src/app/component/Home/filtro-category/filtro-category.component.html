@@ -1,0 +1,71 @@
+<form [formGroup]="form">
+    <mat-accordion >
+        <mat-expansion-panel [disabled]="!verificaDisplayName" >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+                <mat-slide-toggle
+                (change)="ativaDisplayName()">
+              <p class="font-padrao text-xl">Category</p>
+          </mat-slide-toggle>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="grid grid-cols-2 gap-4 my-4">
+    
+              <mat-form-field  class="font-padrao mb-[-1.25em]" appearance="outline">
+                <mat-label class="font-padrao">Equals</mat-label>
+                <input formControlName="equals"  matInput>
+                
+              </mat-form-field>
+    
+              <mat-form-field class=" mb-[-1.25em]" appearance="outline" >
+                <mat-label class=" font-padrao">In</mat-label>
+                <mat-select  class="font-padrao" formControlName="in"  multiple>
+                  <mat-option *ngFor="let category of selecaoCategorys" [value]="category"><p class="font-padrao">{{category}}</p></mat-option>
+                  <mat-select-trigger class="font-padrao">
+                    {{form.get('in')?.value?.[0] || ''}}
+                    <span  *ngIf="(form.get('in')?.value?.length || 0) > 1" class=" font-padrao">
+                      (+{{(form.get('in')?.value?.length || 0) - 1}} {{form.get('in')?.value?.length === 2 ? 'category' : 'categorys'}})
+                    </span>
+                  </mat-select-trigger>
+                </mat-select>
+                
+              </mat-form-field>
+        </div>
+    
+        <mat-expansion-panel [disabled]="!verificaNot">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-slide-toggle
+        (change)="ativaNot()">
+      <p class="font-padrao text-xl">Not</p>
+  </mat-slide-toggle>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="grid grid-cols-2 gap-4">
+            
+
+          <mat-form-field  class="font-padrao mb-[-1.25em]" appearance="outline">
+            <mat-label class="font-padrao">Equals</mat-label>
+            <input formControlName="notEquals"   matInput>
+            
+          </mat-form-field>
+
+          <mat-form-field class=" mb-[-1.25em]" appearance="outline" >
+            <mat-label class=" font-padrao">In</mat-label>
+            <mat-select  class="font-padrao" formControlName="notIn"  multiple>
+              <mat-option *ngFor="let category of selecaoCategorys" [value]="category"><p class="font-padrao">{{category}}</p></mat-option>
+              <mat-select-trigger class="font-padrao">
+                {{form.get('notIn')?.value?.[0] || ''}}
+                <span  *ngIf="(form.get('notIn')?.value?.length || 0) > 1" class=" font-padrao">
+                  (+{{(form.get('notIn')?.value?.length || 0) - 1}} {{form.get('notIn')?.value?.length === 2 ? 'category' : 'categorys'}})
+                </span>
+              </mat-select-trigger>
+            </mat-select>
+            
+          </mat-form-field>
+    </div>
+  </mat-expansion-panel>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+</form>

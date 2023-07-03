@@ -1,0 +1,25 @@
+<div class="p-4 flex flex-col gap-4  h-[87%] overflow-auto">
+    <h2 class="text-4xl text-center  ">Skins</h2>
+    <app-filtro-list></app-filtro-list>
+   <app-filtro-displayname [filtroSkin]="true"></app-filtro-displayname>
+   <div class="flex justify-between">
+    <mat-checkbox  (change)="alterarWeapon()"><p class="font-padrao">Weapon</p> </mat-checkbox>
+    <mat-checkbox (change)="alterarTier()"  ><p class="font-padrao">Thier</p> </mat-checkbox>
+    <mat-checkbox (change)="alterarTheme()" ><p class="font-padrao">Theme</p></mat-checkbox>
+    <mat-checkbox (change)="alterarReward()" ><p class="font-padrao">Reward</p></mat-checkbox>
+    <mat-checkbox (change)="alterarChromas()"><p class="font-padrao">Chromas</p></mat-checkbox>
+    <mat-checkbox (change)="alterarLevels()"><p class="font-padrao">Levels</p></mat-checkbox>
+   
+   </div>
+   <div *ngIf="weapon" class="flex flex-col gap-3">
+    <h2 class="text-4xl text-center">Weapons</h2>
+    <app-filtro-displayname></app-filtro-displayname>
+    <app-filtro-category></app-filtro-category>
+   </div>
+   
+
+</div>
+<div class="px-4 flex justify-between">
+    <button class="border p-2 rounded-md hover:bg-vermelho" (click)="fecharModal()">Cancelar</button>
+    <button class="border p-2 rounded-md hover:bg-vermelho" (click)="filtrarSkins()" [disabled]="filtroList?.form?.invalid">Filtrar</button>
+   </div>

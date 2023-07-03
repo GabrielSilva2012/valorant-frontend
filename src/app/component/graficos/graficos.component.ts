@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { reaward, single } from './data';
-import { eventos } from './data';
 import { LegendPosition } from '@swimlane/ngx-charts';
 import { FormControl } from '@angular/forms';
+import { GraficosService } from './graficos.service';
 
 
 @Component({
@@ -11,24 +10,29 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./graficos.component.css'],
 })
 export class GraficosComponent implements OnInit {
+  
 
   selecaoArmasControl = new FormControl('');
-  relacionamentosControl = new FormControl('');
+  rewardsControl = new FormControl('');
   agentsControl = new FormControl('');
-  reawardsControl = new FormControl('');
+  xpsControl = new FormControl('');
 
 
 
   selecaoArmas: string[] = ['Classic', 'Shorty', 'Frenzy', 'Sheriff', 'Bucky', 'Judge', 'Stinger', 'Spectre', 'Guardian', 'Bulldog', 'Vandal', 'Ares', 'Odin'];
-  relacionamentos: string[]= ['Reawards', 'Agents', 'Contracts', 'Skins', 'Themes']
-  agents: string[]= ['Iniciador', 'Duelista', 'Sentinela', 'Controlador']
-  reawards: string[]= ['Agent', 'Title', 'Spray', 'Card', 'Currency', 'Buddy', 'Skin']
-  eventos = []
-  single = []
-  reaward = []
+  selecaoReawards: string[]= ['Spray', 'Card', 'Title', 'Buddy', 'Skin', 'Currency']
+  selecaoAgents: string[]= ['Initiator', 'Sentinel', 'Duelist', 'Controller']
+  selecaoContratos: string[]= ['Agent', 'Event', 'Season']
 
-  view: [number, number] = [0, 0];
-  view2:[number, number] = [1000, 0];
+
+
+
+  armas: any = []
+  rewards: any = []
+  agents: any = []
+  xps = []
+
+
 
   cardColor: string = '#232837';
 
@@ -36,54 +40,47 @@ export class GraficosComponent implements OnInit {
   gradient: boolean = false;
   showLegend: boolean = true;
   showLabels: boolean = true;
-  isDoughnut: boolean = false;
+  isDoughnut: boolean = true;
   showXAxis = true;
   showYAxis = true;
-  showXAxisLabel = false;
-  xAxisLabel = 'Skins em Eventos';
+  showXAxisLabel = true;
   showYAxisLabel = true;
-  yAxisLabel = 'Quantidade';
   legendPosition = 'below';
 
 
   below = LegendPosition.Below
 
-  constructor() {
-    Object.assign(this, { single });
-    Object.assign(this, { eventos });
-    Object.assign(this, { reaward });
+  constructor(
+    public graficosService: GraficosService
+  ) {
+
   }
-
-  
-
 
   ngOnInit(): void {
-    console.log(this.selecaoArmasControl)
+  this.filtrarArmas();
+  this.filtrarRewards();
+  this.filtrarAgentes();
+  this.filtrarXps();
   }
 
-  onSelect(data: any): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+
+
+  filtrarArmas(){
+    this.graficosService.getCountSkin((this.selecaoArmasControl.value)?.toString()).subscribe((result)=>{
+      this.armas = this.graficosService.tranformarDados(result, 'weapon', 'skins')});
+  }
+  
+  filtrarRewards(){
+    this.graficosService.getCountReawald((this.rewardsControl.value)?.toString()).subscribe((result)=>{
+      this.rewards = this.graficosService.tranformarDados(result, 'type', 'gived')});   
+  }
+  filtrarAgentes(){
+    this.graficosService.getCountAgents((this.agentsControl.value)?.toString()).subscribe((result)=>{
+      this.agents = this.graficosService.tranformarDados(result, 'role', 'agents')});   
   }
 
-  onActivate(data:any): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
-  }
-
-  onDeactivate(data:any): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
-  }
-
-  filtarArmas(){
-    console.log(this.selecaoArmasControl.value)
-  }
-  filtarRelacionamentos(){
-    console.log(this.relacionamentosControl.value)
-  }
-  filtarAgentes(){
-    console.log(this.agentsControl.value)
-  }
-
-  filtarReawards(){
-    console.log(this.reawardsControl.value)
+  filtrarXps(){
+    this.graficosService.getCountXps((this.xpsControl.value)?.toString()).subscribe((result)=>{
+      this.xps = this.graficosService.tranformarDados(result, 'type', 'xp')});   
   }
 }
