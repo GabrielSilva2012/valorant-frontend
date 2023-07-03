@@ -10,8 +10,8 @@ export class FiltroListComponent {
   verificaListar = false
   
   form = new FormGroup({
-    skip: new FormControl(''),
-    take: new FormControl('', Validators.required),
+    skip: new FormControl(0),
+    take: new FormControl(10, Validators.required),
   });
 
 

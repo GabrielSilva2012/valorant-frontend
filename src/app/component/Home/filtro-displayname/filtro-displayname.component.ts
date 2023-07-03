@@ -24,7 +24,7 @@ export class FiltroDisplaynameComponent {
     mode: new FormControl('')
   });
 
-  selecaoWeapons: string[] = ['Classic', 'Shorty', 'Melle', 'Ghost', 'Frenzy', 'Sheriff', 'Bucky', 'Judge', 'Stinger', 'Spectre', 'Guardian', 'Bulldog', 'Vandal', 'Ares', 'Odin'];
+  selecaoWeapons: string[] = ['Classic', 'Shorty', 'Melee', 'Ghost', 'Frenzy', 'Sheriff', 'Bucky', 'Judge', 'Stinger', 'Spectre', 'Guardian', 'Bulldog', 'Vandal', 'Ares', 'Odin'];
   mostrarForm(){
     console.log(this.form.value)
   }
