@@ -18,16 +18,16 @@
        </div> 
       </div>
     
-      <div *ngFor="let skin of skins" class="border rounded-md border-[#fff] h-48 p-4 flex flex-col justify-center gap-4 hover:border-verde hover:bg-verde hover:bg-opacity-60 ">
+      <!-- <div *ngFor="let skin of skins" class="border rounded-md border-[#fff] h-48 p-4 flex flex-col justify-center gap-4 hover:border-verde hover:bg-verde hover:bg-opacity-60 ">
         <img class="flex justify-center h-[70%]" src="{{skin.displayIcon}}" alt="" >
        <div class="text-[#fff] text-sm">
         <p class="">Nome: {{skin.displayName}}</p>
        </div> 
-      </div>
+      </div> -->
 
     </div>
 
-    <div *ngIf="resultadoSkin"   class="  bg-[#fff] h-[80vh]  rounded-2xl bg-opacity-30 p-4  grid grid-cols-4 gap-8 overflow-auto">
+    <div *ngIf="resultadoSkin"   class="  bg-[#fff] max-h-[80vh]  rounded-2xl bg-opacity-30 p-4  grid grid-cols-4 gap-8 overflow-auto">
         <div *ngFor="let skin of filtragemSkin" class="border rounded-md border-[#fff] h-48 p-4 flex flex-col justify-center gap-4 hover:border-verde hover:bg-verde hover:bg-opacity-60 ">
             
           <div class="flex justify-center">
