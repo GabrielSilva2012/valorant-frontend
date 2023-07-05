@@ -2,13 +2,14 @@
 
     <p class="text-vermelho text-[5em] text-center mb-10 ">Valorant+</p>
 
-<div class="flex gap-4 justify-center mb-4 ">
+<div class="flex gap-4 justify-center items-center mb-4 "[ngStyle]="{'margin': (resultadoWeapons === false && resultadoSkin === false) ? '8em 0' : ''}">
   
+  <p  class="text-[#fff] text-3xl">Filtrar por:</p>
     <button (click)="filtrarWeapons()" class="text-[#fff] w-60 h-fit hover:bg-verde hover:bg-opacity-60 hover:border-verde text-4xl border p-4 rounded-md">Weapon</button>
     <button class="text-[#fff] hover:bg-verde hover:bg-opacity-60  h-fit w-60 hover:border-verde text-4xl border p-4 rounded-md" (click)="filtrarSkins()">Skins</button> 
 </div>
        
-    <div *ngIf="resultadoWeapons"   class="  bg-[#fff] h-[80vh]  rounded-2xl bg-opacity-30 p-4  grid grid-cols-4 gap-8 overflow-auto">
+    <div *ngIf="resultadoWeapons"  class="bg-[#fff] max-h-[80vh] max-w-full rounded-2xl bg-opacity-30 p-4  grid grid-cols-4 gap-8 overflow-auto">
       <div *ngFor="let arma of armas" class="border rounded-md border-[#fff] h-48 p-4 flex flex-col justify-center gap-4 hover:border-verde hover:bg-verde hover:bg-opacity-60 ">
         <img class="flex justify-center h-[70%]" src="{{arma.displayIcon}}" alt="" >
        <div class="text-[#fff] text-sm">
@@ -17,23 +18,29 @@
        </div> 
       </div>
     
-
-        <div *ngFor="let skin of skins" class="border rounded-md border-[#fff] h-48 p-4 flex flex-col justify-center gap-4 hover:border-verde hover:bg-verde hover:bg-opacity-60 ">
-            <img class="flex justify-center h-[70%]" src="{{skin.displayIcon}}" alt="" >
-           <div class="text-[#fff] text-sm">
-            <p class="">Nome: {{skin.displayName}}</p>
-           </div> 
-          </div>
+      <div *ngFor="let skin of skins" class="border rounded-md border-[#fff] h-48 p-4 flex flex-col justify-center gap-4 hover:border-verde hover:bg-verde hover:bg-opacity-60 ">
+        <img class="flex justify-center h-[70%]" src="{{skin.displayIcon}}" alt="" >
+       <div class="text-[#fff] text-sm">
+        <p class="">Nome: {{skin.displayName}}</p>
+       </div> 
+      </div>
 
     </div>
 
     <div *ngIf="resultadoSkin"   class="  bg-[#fff] h-[80vh]  rounded-2xl bg-opacity-30 p-4  grid grid-cols-3 gap-8 overflow-auto">
         <div *ngFor="let skin of filtragemSkin" class="border rounded-md border-[#fff] h-48 p-4 flex flex-col justify-center gap-4 hover:border-verde hover:bg-verde hover:bg-opacity-60 ">
             
-            <img class="flex justify-center h-[70%]" src="{{skin.displayIcon}}" alt="" >
+          <div class="flex justify-center">
+            <img class="w-fit h-[6em] " src="{{skin.displayIcon}}" alt="" >
+          </div>  
          <div class="text-[#fff] text-sm">
           <p class="">Name: {{skin.displayName}}</p>
-          <p *ngIf="skin.weapon" >Arma: {{skin.weapon.displayName}} <img *ngIf="skin?.tier" src="{{skin.tier.displayIcon}}" class="float-right w-8" alt=""></p>
+          <div class="flex justify-between w-full">
+            <p *ngIf="skin.weapon" >Arma: {{skin.weapon.displayName}}</p>
+            <img *ngIf="skin?.tier" src="{{skin.tier.displayIcon}}" class="float-right w-8" alt="">
+          </div>
+        
+         
          </div> 
         </div>
   

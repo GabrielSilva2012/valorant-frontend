@@ -14,7 +14,7 @@ export class HomeComponent {
 
   resultadoSkin = false
 
-  resultadoWeapons = true
+  resultadoWeapons = false
   teste: any
 
   filtragem: any
@@ -34,10 +34,12 @@ export class HomeComponent {
     });
 
     dialogRef.afterClosed().subscribe(result =>{
+      this.filtragem = []
+     if(result?.content){
+      this.filtragem = result?.content
       this.skins = []
       this.armas = []
-     this.filtragem = result?.content
-     if(result?.content){
+
       this.resultadoWeapons = true
       this.resultadoSkin = false
      }
@@ -65,10 +67,11 @@ export class HomeComponent {
     });
 
     dialogRef.afterClosed().subscribe(result =>{
+      this.filtragemSkin = []
+     if(result?.content){
+      this.filtragemSkin = result?.content
       this.skins = []
       this.armas = []
-     this.filtragemSkin = result?.content
-     if(result?.content){
       this.resultadoSkin = true
       this.resultadoWeapons = false
      }

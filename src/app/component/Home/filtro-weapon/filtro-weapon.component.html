@@ -1,13 +1,13 @@
-<div class="p-4 flex flex-col h-[87%] overflow-auto">
+<div class="p-8 flex flex-col h-[87%] overflow-auto">
   <h2 class="text-center text-3xl mb-3 ">Weapons</h2>
   <app-filtro-list></app-filtro-list>
  <app-filtro-displayname></app-filtro-displayname>
- <app-filtro-category></app-filtro-category>
+ <app-filtro-category class="mt-4"></app-filtro-category>
+ <mat-checkbox [(ngModel)]="filtrarSkin"><p class="font-padrao">Skin</p> </mat-checkbox>
  <div class="flex justify-center mt-10 px-4">
- <button *ngIf="!filtrarSkin" (click)="filtroSkin()"  class=" border p-2 rounded-md hover:bg-vermelho"> + Adicionar Skin</button>
- <div *ngIf="filtrarSkin" class="flex flex-col gap-4 ">
+ <div *ngIf="filtrarSkin" class="flex flex-col gap-4">
    <div class="flex justify-center gap-2">
-    <h2 class=" text-4xl">Skins</h2>
+    <h2 class="text-4xl">Skins</h2>
     <button (click)="filtroSkin()"><mat-icon>close</mat-icon></button>
    </div>
 
@@ -23,7 +23,7 @@
  
  </div>
 </div>
-<div class="px-4 flex justify-between">
+<div class="px-8 flex justify-between">
   <button class="border p-2 rounded-md hover:bg-vermelho" (click)="fechar()">Cancelar</button>
   <button class="border p-2 rounded-md hover:bg-vermelho" (click)="filtrarDados()" [disabled]="formList?.invalid">Filtrar</button>
  </div>

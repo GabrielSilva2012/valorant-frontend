@@ -1,4 +1,4 @@
-<div class="p-4 flex flex-col gap-4  h-[87%] overflow-auto">
+<div class="p-8 flex flex-col gap-4  h-[87%] overflow-auto">
     <h2 class="text-4xl text-center  ">Skins</h2>
     <app-filtro-list></app-filtro-list>
    <app-filtro-displayname [filtroSkin]="true"></app-filtro-displayname>
@@ -19,7 +19,7 @@
    
 
 </div>
-<div class="px-4 flex justify-between">
+<div class="px-8 flex justify-between">
     <button class="border p-2 rounded-md hover:bg-vermelho" (click)="fecharModal()">Cancelar</button>
     <button class="border p-2 rounded-md hover:bg-vermelho" (click)="filtrarSkins()" [disabled]="filtroList?.form?.invalid">Filtrar</button>
    </div>

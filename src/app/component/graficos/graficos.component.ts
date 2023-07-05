@@ -47,6 +47,16 @@ export class GraficosComponent implements OnInit {
   showYAxisLabel = true;
   legendPosition = 'below';
 
+  barChartcustomColors = 
+  [
+    { name: "", value: '#f94555' },
+    { name: "", value: '#f2636b' },
+    { name: "", value: '#672e37' },
+    { name: "", value: '#7e7c7d' },
+    { name: "", value: '#ce9e9c' },
+    { name: "", value: '#3c3a4c' },
+  ]
+
 
   below = LegendPosition.Below
 

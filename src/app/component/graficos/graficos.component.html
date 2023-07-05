@@ -17,10 +17,10 @@
                 </mat-select>
               </mat-form-field>
         </div>
-        <div class="bg-verde mx-36 bg-opacity-40 rounded-2xl py-10 flex justify-center">
+        <div class="bg-verde  border border-verde mx-36 bg-opacity-40 rounded-2xl py-10 flex justify-center">
           <ngx-charts-bar-vertical
           [view]="[1000,0]"
-          [scheme]="'fire'"
+          [customColors]="barChartcustomColors"
           [results]="armas"
           [gradient]="gradient"
           [xAxis]="showXAxis"
@@ -52,10 +52,10 @@
                     </mat-select>
                   </mat-form-field>
             </div>
-            <div class="bg-verde bg-opacity-40 rounded-2xl py-10 flex  justify-center">
+            <div class="bg-verde border border-verde  bg-opacity-40 rounded-2xl py-10 flex  justify-center">
             <ngx-charts-pie-chart
             [view]="[0,0]"
-            [scheme]="'fire'"
+            [customColors]="barChartcustomColors"
             [results]="rewards"
             [gradient]="gradient"
             [legend]="showLegend"
@@ -74,10 +74,10 @@
          <p class="text-center font-padrao text-3xl h-20 flex items-center text-[#fff]">Roles de Agentes</p>
     
         </div>
-        <div class="bg-verde bg-opacity-40 rounded-2xl py-10 flex  justify-center">
+        <div class="bg-verde  border border-verde bg-opacity-40 rounded-2xl py-10 flex  justify-center">
             <ngx-charts-number-card
             [view]="[0,0]"
-            [scheme]="'fire'"
+            [customColors]="barChartcustomColors"
             [results]="agents"
             [cardColor]="cardColor"
             (select)="false">
@@ -98,10 +98,10 @@
                 </mat-select>
               </mat-form-field>
         </div>
-        <div class="bg-verde mx-56 bg-opacity-40 rounded-2xl  flex justify-center">
+        <div class="bg-verde  border border-verde  mx-56 bg-opacity-40 rounded-2xl  flex justify-center">
             <ngx-charts-advanced-pie-chart
-            [view]="[800,0]"
-            [scheme]="'fire'"
+            [view]="[900,0]"
+            [customColors]="barChartcustomColors"
             [results]="xps"
             [gradient]="gradient"
             (select)="false"

@@ -1,0 +1,18 @@
+::-webkit-scrollbar {
+    width: 7px; /* Largura da barra de rolagem */
+    --tw-bg-opacity: 0.4;
+    background-color:none; /* Cor de fundo da barra de rolagem */
+  }
+  
+  /* Cor do preenchimento da barra de rolagem */
+  ::-webkit-scrollbar-thumb {
+
+    border-radius: 10px;
+    background-color: rgb(85 198 176 / var(--tw-bg-opacity)); /* Cor da barra de rolagem */
+  }
+  
+  /* Estilo do canto da barra de rolagem */
+  ::-webkit-scrollbar-corner {
+    --tw-bg-opacity: 0.4;
+    background-color: none; /* Cor de fundo do canto da barra de rolagem */
+  }
