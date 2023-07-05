@@ -34,8 +34,9 @@ export class HomeComponent {
     });
 
     dialogRef.afterClosed().subscribe(result =>{
-      this.filtragem = []
+      this.resultadoWeapons = false
      if(result?.content){
+      this.filtragem = []
       this.filtragem = result?.content
       this.skins = []
       this.armas = []
@@ -67,8 +68,9 @@ export class HomeComponent {
     });
 
     dialogRef.afterClosed().subscribe(result =>{
-      this.filtragemSkin = []
+      this.resultadoSkin = false
      if(result?.content){
+      this.filtragemSkin = []
       this.filtragemSkin = result?.content
       this.skins = []
       this.armas = []

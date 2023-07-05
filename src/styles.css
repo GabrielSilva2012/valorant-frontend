@@ -12,7 +12,7 @@ html, body { height: 100%; }
 body { margin: 0; font-family:  "font-padrao", sans-serif; }
 
 ::-webkit-scrollbar {
-  width: 5px; /* Largura da barra de rolagem */
+  width: 0px; /* Largura da barra de rolagem */
   --tw-bg-opacity: 0.4;
   border-radius: 10px;
   background-color: none; /* Cor de fundo da barra de rolagem */
@@ -22,7 +22,7 @@ body { margin: 0; font-family:  "font-padrao", sans-serif; }
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   --tw-bg-opacity: 0.5;
-  background-color: rgb(85 198 176 / var(--tw-bg-opacity));
+  background-color:none;
 }
 
 /* Estilo do canto da barra de rolagem */
