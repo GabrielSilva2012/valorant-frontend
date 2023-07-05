@@ -17,6 +17,8 @@ export class HomeComponent {
   resultadoWeapons = false
   teste: any
 
+  mostrarSkin = false
+
   filtragem: any
 
   filtragemSkin: any
